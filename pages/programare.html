@@ -24,57 +24,65 @@
     </ul>
   </nav>
 
-  <!-- PROGRAMARE FORM -->
+ <!-- PROGRAMARE FORM -->
+<form id="programareForm" action="https://api.sheetmonkey.io/form/AYQMm4nts5FJ7qL8pMGuX" method="post">
+
   <div class="programare-container">
     <div class="programare-form">
       <h2>Programează-te online</h2>
-      <p class="subtitle">Completează formularul de mai jos și te vom contacta în cel mai scurt timp.</p>
+      <p class="subtitle">
+        Completează formularul de mai jos și te vom contacta în cel mai scurt timp.
+      </p>
 
-      <form action="succes.html" method="get">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="nume">Nume și prenume</label>
-            <input type="text" id="nume" name="nume" placeholder="Introduceți numele complet" required />
-          </div>
-          <div class="form-group">
-            <label for="serviciu">Serviciu dorit</label>
-            <select id="serviciu" name="serviciu">
-              <option value="">Alegeți serviciul</option>
-              <option value="kinetoterapie">Kinetoterapie</option>
-              <option value="fizioterapie">Fizioterapie</option>
-              <option value="masaj">Masaj Medical</option>
-              <option value="recuperare">Recuperare Sportivă</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="telefon">Telefon</label>
-            <input type="tel" id="telefon" name="telefon" placeholder="Introduceți numărul de telefon" required />
-          </div>
-          <div class="form-group">
-            <label for="data">Data preferată</label>
-            <input type="date" id="data" name="data" />
-          </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nume">Nume și prenume</label>
+          <input type="text" id="nume" name="nume" placeholder="Introduceți numele complet" required />
         </div>
 
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="Introduceți adresa de email" />
+          <label for="serviciu">Serviciu dorit</label>
+          <select id="serviciu" name="serviciu">
+            <option value="">Alegeți serviciul</option>
+            <option value="kinetoterapie">Kinetoterapie</option>
+            <option value="fizioterapie">Fizioterapie</option>
+            <option value="masaj">Masaj Medical</option>
+            <option value="recuperare">Recuperare Sportivă</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="telefon">Telefon</label>
+          <input type="tel" id="telefon" name="telefon" required />
         </div>
 
-        <div class="form-group" style="margin-top:16px;">
-          <label for="mesaj">Mesaj (opțional)</label>
-          <textarea id="mesaj" name="mesaj" placeholder="Scrieți mesajul tău aici..."></textarea>
+        <div class="form-group">
+          <label for="data">Data preferată</label>
+          <input type="date" id="data" name="data" />
         </div>
+      </div>
 
-        <div class="form-submit">
-          <button type="submit" class="btn btn-primary">TRIMITE CEREREA</button>
-        </div>
-      </form>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" />
+      </div>
+
+      <div class="form-group" style="margin-top:16px;">
+        <label for="mesaj">Mesaj (opțional)</label>
+        <textarea id="mesaj" name="mesaj"></textarea>
+      </div>
+
+      <div class="form-submit">
+        <button type="submit" class="btn btn-primary">
+          TRIMITE CEREREA
+        </button>
+      </div>
+
     </div>
-
+  </div>
+</form>
     <!-- PROGRAM SIDEBAR -->
     <aside>
       <div class="program-lucru">
@@ -94,6 +102,7 @@
       </div>
     </aside>
   </div>
+
 
   <!-- FOOTER BAR -->
   <footer class="footer-bar">
@@ -120,4 +129,18 @@
   </footer>
 
 </body>
+<script>
+  document.getElementById("programareForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+  
+    fetch(this.action, {
+      method: "POST",
+      body: new FormData(this)
+    }).then(() => {
+      window.location.href = "succes.html";
+    }).catch(() => {
+      alert("Eroare la trimitere. Încearcă din nou.");
+    });
+  });
+  </script>
 </html>
